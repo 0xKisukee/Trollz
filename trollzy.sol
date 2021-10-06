@@ -852,14 +852,24 @@ contract Trollzy is ERC721Enumerable, Ownable {
     Counters.Counter private _tokenId;
 
     //VARIABLES
-    uint256 public TrollzyCap = 1000;
-    uint256 public price = 70000000000000000; //0.07 Ether
+    uint public TrollzyCap = 1000;
+    uint public price = 70000000000000000; //0.07 Ether
+    uint public maxMint = 20;
+    uint public maxMintEarly = 5;
+    uint public blockStart = 10000;
+    uint public premintAdvantage = 500;
+    uint public earlyAdvantage = 100;
+    uint public teamMint = 25;
     string baseTokenURI;
     address trollzerAddress;
-    address member1 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //Member 1 (60%)
-    address member2 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //Member 2 (40%)
+    address member1 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
+    address member2 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
+    address member3 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
+    address member4 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
+    address member5 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
     bool privateCalled;
     bool revealCalled;
+    mapping (address => uint) earlyMembers;
     
     WhitelistInterfacePremint public whitelistPremint = WhitelistInterfacePremint(0x48E611316855AB9b1101ee5ed569EF81976666FC);
     WhitelistInterfaceEarly public whitelistEarly = WhitelistInterfaceEarly(0x48E611316855AB9b1101ee5ed569EF81976666FC);
@@ -878,8 +888,8 @@ contract Trollzy is ERC721Enumerable, Ownable {
     }
 
     function buyTrollzy(uint256 _amount) public payable {
-        require(block.number >= 100, "Sales did not start.");
-        require(_amount > 0 && _amount <= 10, "You have to mint between 1 and 20 Trollzy.");
+        require(_amount <= maxMint, "You have to mint between 1 and 20 Trollzy.");
+        require(block.number >= blockStart, "Sales did not start.");
         require(totalSupply() + _amount <= TrollzyCap, "Trollzy cap will be exceeded.");
         require(msg.value >= price * _amount, "Ether amount is not correct.");
 
@@ -889,9 +899,10 @@ contract Trollzy is ERC721Enumerable, Ownable {
     }
     
     function buyTrollzyPremint(uint256 _amount) public payable {
-        require(block.number >= 100, "Sales did not start.");
         require(whitelistPremint.isWhitelistedPremint(msg.sender) == true, "You are not whitelisted.");
-        require(_amount > 0 && _amount <= 10, "You have to mint between 1 and 10 Trollzy.");
+        
+        require(earlyMembers[msg.sender] + _amount <= maxMintEarly, "You have to mint between 1 and 5 Trollzy.");
+        require(block.number >= blockStart - premintAdvantage, "Sales did not start.");
         require(totalSupply() + _amount <= TrollzyCap, "Trollzy cap will be exceeded.");
         require(msg.value >= price * _amount, "Ether amount is not correct.");
 
@@ -901,9 +912,10 @@ contract Trollzy is ERC721Enumerable, Ownable {
     }
     
     function buyTrollzyEarly(uint256 _amount) public payable {
-        require(block.number >= 100, "Sales did not start.");
         require(whitelistEarly.isWhitelistedEarly(msg.sender) == true, "You are not whitelisted.");
-        require(_amount > 0 && _amount <= 10, "You have to mint between 1 and 10 Trollzy.");
+        
+        require(earlyMembers[msg.sender] + _amount <= maxMintEarly, "You have to mint between 1 and 5 Trollzy.");
+        require(block.number >= blockStart - earlyAdvantage, "Sales did not start.");
         require(totalSupply() + _amount <= TrollzyCap, "Trollzy cap will be exceeded.");
         require(msg.value >= price * _amount, "Ether amount is not correct.");
 
@@ -914,9 +926,9 @@ contract Trollzy is ERC721Enumerable, Ownable {
     
     function mintTrollzyPrivate() public onlyMember1 {
         require(privateCalled == false, "You already called this function.");
-        require(totalSupply() + 25 <= TrollzyCap, "Trollzy cap will be exceeded.");
+        require(totalSupply() + teamMint <= TrollzyCap, "Trollzy cap will be exceeded.");
         
-        for (uint256 i = 0; i < 25; i++) {
+        for (uint256 i = 0; i < teamMint; i++) {
             _mint(msg.sender);
         }
         privateCalled = true;
@@ -940,10 +952,16 @@ contract Trollzy is ERC721Enumerable, Ownable {
     }
     
     function withdraw() payable public {
-        uint256 member1Part = address(this).balance / 2;
-        uint256 member2Part = address(this).balance / 2;
-        payable(member1).transfer(member1Part);
-        payable(member2).transfer(member2Part);
+        uint256 member1Share = address(this).balance / 20;
+        uint256 member2Share = address(this).balance / 20;
+        uint256 member3Share = address(this).balance / 20;
+        uint256 member4Share = address(this).balance / 20;
+        uint256 member5Share = address(this).balance / 20;
+        payable(member1).transfer(member1Share);
+        payable(member2).transfer(member2Share);
+        payable(member3).transfer(member3Share);
+        payable(member4).transfer(member4Share);
+        payable(member5).transfer(member5Share);
     }
 
     function _mint(address _to) private {
