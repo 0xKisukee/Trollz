@@ -860,7 +860,6 @@ contract Trollzy is ERC721Enumerable, Ownable {
     address member2 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //Member 2 (40%)
     bool privateCalled;
     bool revealCalled;
-    bool saleOn;
     
     WhitelistInterfacePremint public whitelistPremint = WhitelistInterfacePremint(0x48E611316855AB9b1101ee5ed569EF81976666FC);
     WhitelistInterfaceEarly public whitelistEarly = WhitelistInterfaceEarly(0x48E611316855AB9b1101ee5ed569EF81976666FC);
@@ -879,9 +878,9 @@ contract Trollzy is ERC721Enumerable, Ownable {
     }
 
     function buyTrollzy(uint256 _amount) public payable {
-        require(saleOn == true, "You can't mint yet.");
+        require(block.number >= 100, "Sales did not start.");
         require(_amount > 0 && _amount <= 10, "You have to mint between 1 and 20 Trollzy.");
-        require(totalSupply() + _amount <= TollzyCap, "Trollzy cap will be exceeded.");
+        require(totalSupply() + _amount <= TrollzyCap, "Trollzy cap will be exceeded.");
         require(msg.value >= price * _amount, "Ether amount is not correct.");
 
         for (uint256 i = 0; i < _amount; i++) {
@@ -890,8 +889,8 @@ contract Trollzy is ERC721Enumerable, Ownable {
     }
     
     function buyTrollzyPremint(uint256 _amount) public payable {
+        require(block.number >= 100, "Sales did not start.");
         require(whitelistPremint.isWhitelistedPremint(msg.sender) == true, "You are not whitelisted.");
-        require(saleOn == true, "You can't mint yet.");
         require(_amount > 0 && _amount <= 10, "You have to mint between 1 and 10 Trollzy.");
         require(totalSupply() + _amount <= TrollzyCap, "Trollzy cap will be exceeded.");
         require(msg.value >= price * _amount, "Ether amount is not correct.");
@@ -902,8 +901,8 @@ contract Trollzy is ERC721Enumerable, Ownable {
     }
     
     function buyTrollzyEarly(uint256 _amount) public payable {
+        require(block.number >= 100, "Sales did not start.");
         require(whitelistEarly.isWhitelistedEarly(msg.sender) == true, "You are not whitelisted.");
-        require(saleOn == true, "You can't mint yet.");
         require(_amount > 0 && _amount <= 10, "You have to mint between 1 and 10 Trollzy.");
         require(totalSupply() + _amount <= TrollzyCap, "Trollzy cap will be exceeded.");
         require(msg.value >= price * _amount, "Ether amount is not correct.");
@@ -921,10 +920,6 @@ contract Trollzy is ERC721Enumerable, Ownable {
             _mint(msg.sender);
         }
         privateCalled = true;
-    }
-    
-    function flipSale() public onlyMember1 {
-        saleOn = !(saleOn);
     }
     
     function setUnrevealURI(string memory _valueURI) onlyMember1 public {
@@ -956,10 +951,6 @@ contract Trollzy is ERC721Enumerable, Ownable {
         uint256 tokenId = _tokenId.current();
         _safeMint(_to, tokenId);
     }
-    
-    function destroy(uint _id) public onlyTrollzer {
-        _burn(_id);
-    }
 
     function _baseURI() internal view virtual override returns (string memory) {
         return baseTokenURI;
@@ -973,11 +964,6 @@ contract Trollzy is ERC721Enumerable, Ownable {
     
     modifier onlyMember2 {
         require(msg.sender == member2);
-    _;
-    }
-    
-    modifier onlyTrollzer {
-        require(msg.sender == trollzerAddress);
     _;
     }
 }
