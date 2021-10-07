@@ -947,10 +947,6 @@ contract Trollzy is ERC721Enumerable, Ownable {
         revealCalled == true;
     }
     
-    function setTrollzerAddress(address _trollzer) public onlyMember1 {
-        trollzerAddress = _trollzer;
-    }
-    
     function withdraw() payable public {
         uint256 member1Share = address(this).balance / 20;
         uint256 member2Share = address(this).balance / 20;
