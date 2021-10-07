@@ -861,7 +861,6 @@ contract Trollzy is ERC721Enumerable, Ownable {
     uint public earlyAdvantage = 100;
     uint public teamMint = 25;
     string baseTokenURI;
-    address trollzerAddress;
     address member1 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
     address member2 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
     address member3 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
