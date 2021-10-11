@@ -814,9 +814,49 @@ contract WhitelistPremint {
     mapping(address => bool) isWhitelistedPremint;
     
     constructor() {
+        isWhitelistedPremint[0x68bCaECbDe98A2B0086C7B8196182b74169BC940] = true;
+        isWhitelistedPremint[0xa5b51559ed72a558368742E50394e089c53716aE] = true;
+        isWhitelistedPremint[0xa9793B01BA723A37463E2e35ac7Ed98773820650] = true;
+        isWhitelistedPremint[0x5E2FBCbbD05841159dCe188C315f0fAda689C123] = true;
+        isWhitelistedPremint[0xd3022599033430bF3fDFb6D9CE41D3CdA7E20245] = true;
+        isWhitelistedPremint[0xEf9Fdc930d645299D01440D82B6c417CBd8F7162] = true;
+        isWhitelistedPremint[0x3bb9B35DDA5286b58d0Cf17d39F5a8c7122E81F0] = true;
+        isWhitelistedPremint[0x976Cce61E57d9bfCfaaa53Ce25E4f9B839664043] = true;
+        isWhitelistedPremint[0x539F3B2B465BDa0B4113a8C27c196ABF69e72EC0] = true;
+        isWhitelistedPremint[0x90339c3d449b908eb51Ba9A5FC42Ef2Dc170C0a1] = true;
+        isWhitelistedPremint[0x4253d654b574d29E118faE5A513C0C3793b6bAD5] = true;
+        isWhitelistedPremint[0x6F82C06403bd30647e2fe25093BF4CAB377e19bf] = true;
+        isWhitelistedPremint[0x7B07f10723e213E8E73f9E86DdaE0A03E7E126d6] = true;
+        isWhitelistedPremint[0xfe0D666e2B1A69d57475C4D516AF1fD47FD2173c] = true;
+        isWhitelistedPremint[0x1ab7079292872fC69052dc4Ef0f9c3417547C43b] = true;
+        isWhitelistedPremint[0x1fe14e53d8C857DFcBFE01243dd922ACfB7cF46C] = true;
+        isWhitelistedPremint[0x9bCBf958364AAd003552DE214Ab562B8aacbeE68] = true;
+        isWhitelistedPremint[0x135e0109E96cb885DB973516CE37554d5764Cab9] = true;
+        isWhitelistedPremint[0xC844A4a63bb232B8c1C761663bD5e98f4068b43F] = true;
+        isWhitelistedPremint[0xc94894B2f11F68CF41e493673C5eE6cDC52e28D4] = true;
+        isWhitelistedPremint[0xD24c3b537571826C11f48D8A27575eCb5e744604] = true;
+        isWhitelistedPremint[0x590d531d00A3F83ee254fE8D0b8267b0189e9118] = true;
+        isWhitelistedPremint[0xeA0e95671074c0B8fB9a699C2562932651021C32] = true;
+        isWhitelistedPremint[0x16F49EA10C8F47Efb7035e1f2FCC1a7CB6D50a64] = true;
+        isWhitelistedPremint[0xe715A88AC6166f9899B9ffE8C687d00CAC884CC0] = true;
+        isWhitelistedPremint[0x76114A36054e02745F5aBeC5702606e7d6e5A584] = true;
+        isWhitelistedPremint[0x6f2d9b59F562d3148845676646eA053cDA537632] = true;
+        isWhitelistedPremint[0xe4c07654Ff5246AE3d3Fe94d630cD017F4CdfC3B] = true;
+        isWhitelistedPremint[0x0755a358A82834569C81Ca4751649f2B763eEe8F] = true;
+        isWhitelistedPremint[0xE13Bd3DE23D437B1EDde24b082b9AfB731f2f277] = true;
+        isWhitelistedPremint[0x425c2E78D4d72A56DC3D8D134ef4b10a98EaAAd9] = true;
+        isWhitelistedPremint[0x002A9a4A1c2a5bfB889833a1Af14eEC452bE86Da] = true;
+        isWhitelistedPremint[0x30e867D2F3D1D5b645B21E0C4Cb451d492424A40] = true;
+        isWhitelistedPremint[0x7cBF5D9d5FBB582045660C4BC81FE0339dcd12F8] = true;
+        isWhitelistedPremint[0x111d2a98D67dE15fBA25661ebC8276B0Fd87DCF8] = true;
+        isWhitelistedPremint[0x64EC28aba72F4C1a9dedc4EDA6c9CC72c0Ba2b1e] = true;
+        isWhitelistedPremint[0x3E4a6212fF392A739010E203a7b82448A3f177cA] = true;
+        isWhitelistedPremint[0xdAd536568Ba804AF3f2F8bc021Db8688cCEd420b] = true;
+        isWhitelistedPremint[0xc0A4D627b3466c39878259d86debC362c3f96e7b] = true;
+        isWhitelistedPremint[0x7dE874cD783C8387c63Aa86C7Bfd23254FF3832c] = true;
         isWhitelistedPremint[0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0] = true;
-        isWhitelistedPremint[0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0] = true;
-        isWhitelistedPremint[0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0] = true;
+        isWhitelistedPremint[0x80e151f1074C0D1cdcA8546BEe30934a4e6d1Af8] = true;
+        isWhitelistedPremint[0x5B394506b8FFA2B7a7EACeddA1cA9f47BB75820f] = true;
     }
     
     function WhitelistedPremint(address _user) public view returns (bool) {
@@ -829,9 +869,26 @@ contract WhitelistEarly {
     mapping(address => bool) isWhitelistedEarly;
     
     constructor() {
+        isWhitelistedEarly[0xAA4830313654C86417aca0292dd3573daf7905C8] = true;
+        isWhitelistedEarly[0xFb5c4E3ACc53038B2d610F30c017479E9665C442] = true;
+        isWhitelistedEarly[0x08257a3230469fCECBdA4155b27CBb65F75c40a4] = true;
+        isWhitelistedEarly[0x20d60A9b4256920Dd556c0B42592CB1f355C02b1] = true;
+        isWhitelistedEarly[0x5D9a1979c554F9f199d8390EBA88E25234882d3f] = true;
+        isWhitelistedEarly[0x5f96816E479631903068520A407b5F170E989D2C] = true;
+        isWhitelistedEarly[0x9D83Fb2d3f09b041AE6100647676155Db36B61aa] = true;
+        isWhitelistedEarly[0x070339e8016ffC869dfAf647fbd78513a7d735b1] = true;
+        isWhitelistedEarly[0x20548A781572163c3f48D5e6769368468d3Dea62] = true;
+        isWhitelistedEarly[0x22aAce211cdd0280021D48717200c0119A8C3764] = true;
+        isWhitelistedEarly[0xd1C72714182A7444DC543B7022ad4BeaB6A5dA45] = true;
+        isWhitelistedEarly[0x353339c5EBc17B740BE010A6F7C5627b46B005e5] = true;
+        isWhitelistedEarly[0xBA93f4686CBA0aA9652080EcC17d581425Ed7F13] = true;
+        isWhitelistedEarly[0x168970485A76690DEF9CB863C11B49B608f49203] = true;
+        isWhitelistedEarly[0x74C609f880EB4655fa3aBB448e221dE38325fa84] = true;
         isWhitelistedEarly[0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0] = true;
-        isWhitelistedEarly[0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0] = true;
-        isWhitelistedEarly[0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0] = true;
+        isWhitelistedEarly[0x353339c5EBc17B740BE010A6F7C5627b46B005e5] = true;
+        isWhitelistedEarly[0x111d2a98D67dE15fBA25661ebC8276B0Fd87DCF8] = true;
+        isWhitelistedEarly[0x1eb54C74F5f68502A5F270cb5609798caD6AC6F4] = true;
+        isWhitelistedEarly[0x3b464c069A714F4d9a12B349b6120AF74c817bAA] = true;
     }
     
     function WhitelistedEarly(address _user) public view returns (bool) {
@@ -855,23 +912,22 @@ contract Trollzy is ERC721Enumerable, Ownable {
     uint public TrollzyCap = 1000;
     uint public price = 70000000000000000; //0.07 Ether
     uint public maxMint = 20;
-    uint public maxMintEarly = 5;
-    uint public blockStart = 10000;
-    uint public premintAdvantage = 500;
-    uint public earlyAdvantage = 100;
-    uint public teamMint = 25;
+    uint public maxMintEarly = 20;
+    uint public blockStart = 13405840;
+    uint public premintAdvantage = 43;
+    uint public earlyAdvantage = 6170;
+    uint public teamMint = 10;
     string baseTokenURI;
-    address member1 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
-    address member2 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
-    address member3 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
-    address member4 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
-    address member5 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //20%
+    address member1 = 0x5833A1675BF894abeCF365Fcd8C8741EC7Ad3630; //61%
+    address member2 = 0x49282E5E05fE59A724641eE867641b5883C02E58; //13%
+    address member3 = 0xAd3948B4Aa2917c36fc0125C266b323f81805D36; //13%
+    address member4 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //13%
     bool privateCalled;
     bool revealCalled;
     mapping (address => uint) earlyMembers;
     
-    WhitelistInterfacePremint public whitelistPremint = WhitelistInterfacePremint(0x48E611316855AB9b1101ee5ed569EF81976666FC);
-    WhitelistInterfaceEarly public whitelistEarly = WhitelistInterfaceEarly(0x48E611316855AB9b1101ee5ed569EF81976666FC);
+    WhitelistInterfacePremint public whitelistPremint = WhitelistInterfacePremint(0x2808f8D0f349785543f2AcFbE4C56C682E60e056);
+    WhitelistInterfaceEarly public whitelistEarly = WhitelistInterfaceEarly(0xa726Dc23052c81821BCe1ea1b7a0A5A748015D13);
 
     constructor() ERC721("Trollzy", "TRZY") {
     }
@@ -900,7 +956,7 @@ contract Trollzy is ERC721Enumerable, Ownable {
     function buyTrollzyPremint(uint256 _amount) public payable {
         require(whitelistPremint.isWhitelistedPremint(msg.sender) == true, "You are not whitelisted.");
         
-        require(earlyMembers[msg.sender] + _amount <= maxMintEarly, "You have to mint between 1 and 5 Trollzy.");
+        require(earlyMembers[msg.sender] + _amount <= maxMintEarly, "You have to mint between 1 and 20 Trollzy.");
         require(block.number >= blockStart - premintAdvantage, "Sales did not start.");
         require(totalSupply() + _amount <= TrollzyCap, "Trollzy cap will be exceeded.");
         require(msg.value >= price * _amount, "Ether amount is not correct.");
@@ -913,7 +969,7 @@ contract Trollzy is ERC721Enumerable, Ownable {
     function buyTrollzyEarly(uint256 _amount) public payable {
         require(whitelistEarly.isWhitelistedEarly(msg.sender) == true, "You are not whitelisted.");
         
-        require(earlyMembers[msg.sender] + _amount <= maxMintEarly, "You have to mint between 1 and 5 Trollzy.");
+        require(earlyMembers[msg.sender] + _amount <= maxMintEarly, "You have to mint between 1 and 20 Trollzy.");
         require(block.number >= blockStart - earlyAdvantage, "Sales did not start.");
         require(totalSupply() + _amount <= TrollzyCap, "Trollzy cap will be exceeded.");
         require(msg.value >= price * _amount, "Ether amount is not correct.");
@@ -947,16 +1003,14 @@ contract Trollzy is ERC721Enumerable, Ownable {
     }
     
     function withdraw() payable public {
-        uint256 member1Share = address(this).balance / 20;
-        uint256 member2Share = address(this).balance / 20;
-        uint256 member3Share = address(this).balance / 20;
-        uint256 member4Share = address(this).balance / 20;
-        uint256 member5Share = address(this).balance / 20;
+        uint256 member1Share = address(this).balance * 61 / 100;
+        uint256 member2Share = address(this).balance * 13 / 100;
+        uint256 member3Share = address(this).balance * 13 / 100;
+        uint256 member4Share = address(this).balance * 13 / 100;
         payable(member1).transfer(member1Share);
         payable(member2).transfer(member2Share);
         payable(member3).transfer(member3Share);
         payable(member4).transfer(member4Share);
-        payable(member5).transfer(member5Share);
     }
 
     function _mint(address _to) private {
