@@ -1,7 +1,3 @@
-/**
- *Submitted for verification at Etherscan.io on 2021-10-11
-*/
-
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.7;
@@ -922,12 +918,12 @@ contract Trollzy is ERC721Enumerable, Ownable {
     uint public earlyAdvantage = 6170;
     uint public teamMint = 10;
     string baseTokenURI;
-    address member1 = 0x5833A1675BF894abeCF365Fcd8C8741EC7Ad3630; //61%
+    address member1 = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4; //61%
     address member2 = 0x49282E5E05fE59A724641eE867641b5883C02E58; //13%
     address member3 = 0xAd3948B4Aa2917c36fc0125C266b323f81805D36; //13%
     address member4 = 0x1002CA2d139962cA9bA0B560C7A703b4A149F6e0; //13%
     bool privateCalled;
-    bool revealCalled;
+    bool public revealCalled;
     mapping (address => uint) earlyMembers;
     
     WhitelistInterfacePremint public whitelistPremint = WhitelistInterfacePremint(0x2808f8D0f349785543f2AcFbE4C56C682E60e056);
@@ -1003,7 +999,7 @@ contract Trollzy is ERC721Enumerable, Ownable {
         require(revealCalled == false);
         
         baseTokenURI = _valueURI;
-        revealCalled == true;
+        revealCalled = true;
     }
     
     function withdraw() payable public {
@@ -1030,11 +1026,6 @@ contract Trollzy is ERC721Enumerable, Ownable {
     //MODIFIER
     modifier onlyMember1 {
         require(msg.sender == member1);
-    _;
-    }
-    
-    modifier onlyMember2 {
-        require(msg.sender == member2);
     _;
     }
 }
