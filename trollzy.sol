@@ -1,3 +1,7 @@
+/**
+ *Submitted for verification at Etherscan.io on 2021-10-11
+*/
+
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.7;
@@ -897,11 +901,11 @@ contract WhitelistEarly {
 }
 
 interface WhitelistInterfacePremint {
-    function isWhitelistedPremint(address _user) external view returns (bool);
+    function WhitelistedPremint(address _user) external view returns (bool);
 }
 
 interface WhitelistInterfaceEarly {
-    function isWhitelistedEarly(address _user) external view returns (bool);
+    function WhitelistedEarly(address _user) external view returns (bool);
 }
 
 contract Trollzy is ERC721Enumerable, Ownable {
@@ -954,7 +958,7 @@ contract Trollzy is ERC721Enumerable, Ownable {
     }
     
     function buyTrollzyPremint(uint256 _amount) public payable {
-        require(whitelistPremint.isWhitelistedPremint(msg.sender) == true, "You are not whitelisted.");
+        require(whitelistPremint.WhitelistedPremint(msg.sender) == true, "You are not whitelisted.");
         
         require(earlyMembers[msg.sender] + _amount <= maxMintEarly, "You have to mint between 1 and 20 Trollzy.");
         require(block.number >= blockStart - premintAdvantage, "Sales did not start.");
@@ -967,7 +971,7 @@ contract Trollzy is ERC721Enumerable, Ownable {
     }
     
     function buyTrollzyEarly(uint256 _amount) public payable {
-        require(whitelistEarly.isWhitelistedEarly(msg.sender) == true, "You are not whitelisted.");
+        require(whitelistEarly.WhitelistedEarly(msg.sender) == true, "You are not whitelisted.");
         
         require(earlyMembers[msg.sender] + _amount <= maxMintEarly, "You have to mint between 1 and 20 Trollzy.");
         require(block.number >= blockStart - earlyAdvantage, "Sales did not start.");
